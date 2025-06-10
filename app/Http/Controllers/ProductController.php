@@ -31,7 +31,6 @@ class ProductController extends Controller
             'images.image' => 'Uploaded file must be an image.',
             'images.max' => 'Image size cannot be more than 2MB.',
         ];
-
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
