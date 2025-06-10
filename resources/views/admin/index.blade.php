@@ -57,42 +57,43 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
+                                        <th>Id</th>
                                         <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Images</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
+                                        <th>Id</th>
                                         <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Images</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
+                                    @foreach ($products as $product)
+                                        <tr>
+                                            <td>{{ $product->id }}</td>
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->description ?? '-' }}</td>
+                                            <td>{{ $product->quantity ?? '-' }}</td>
+                                            <td>{{ $product->price ?? '-' }}</td>
+                                            <td>
+                                                @if ($product->images)
+                                                    <img src="{{ asset('products/' . $product->images) }}"
+                                                        alt="Image" width="60">
+                                                @else
+                                                    <span>-</span>
+                                                @endif
+                                            </td>
 
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -139,21 +140,22 @@
     </div>
 
     @include('components.adminscript')
-    <script src="dashboard/vendor/jquery/jquery.min.js"></script>
-    <script src="dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('dashboard/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ asset('dashboard/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="dashboard/js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('dashboard/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="dashboard/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="dashboard/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('dashboard/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('dashboard/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="dashboard/js/demo/datatables-demo.js"></script>
+    <script src="{{ asset('dashboard/js/demo/datatables-demo.js') }}"></script>
+
 
 </body>
 
